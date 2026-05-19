@@ -2,10 +2,10 @@ services:
   node-card-web:
     build:
       context: .
-      args:
-        VITE_API_BASE: ${VITE_API_BASE:-https://api.node-card.com}
     image: node-card-web:latest
     container_name: node-card-web
+    environment:
+      API_PROXY_TARGET: ${API_PROXY_TARGET:-https://api.node-card.com}
     restart: unless-stopped
     ports:
       - "${APP_PORT:-8080}:80"
